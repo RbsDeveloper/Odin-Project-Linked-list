@@ -75,6 +75,34 @@ class LinkedList{
 
         return this.indexAtRecursive(idx-1, node.next)
     }
+
+    //It pops the last element of the linked List 
+    pop(){
+        
+        let oldTail
+
+        if(!this.head) return undefined;
+
+        if(this.length === 1){
+            oldTail = this.head
+            this.head = null;
+            this.tail = null;
+        }else{
+            
+            let current = this.head;
+
+            for(let i = 0; i < this.length-2; i++){
+                current = current.next
+            }
+
+            oldTail=current.next;
+            this.tail = current;
+            current.next = null;
+        }
+
+        this.length--
+        return oldTail;
+    }
    
 }
 
@@ -86,14 +114,16 @@ ls.append(2)
 ls.append(3)
 console.log(ls)
 
-// console.log(ls.prepend(0));
-// console.log(ls.size());
-// console.log(ls.showHead());
+console.log(ls.prepend(0));
+//console.log(ls.size());
+//console.log(ls.showHead());
 //console.log(ls.showTail());
 
 //console.log(ls.indexAt(0));
 //console.log(ls.indexAt(2));
 //console.log(ls.indexAt(4));
-console.log(ls.indexAtRecursive(4));
-console.log(ls.indexAtRecursive(2));
-console.log(ls.indexAtRecursive(0));
+//console.log(ls.indexAtRecursive(4));
+//console.log(ls.indexAtRecursive(2));
+//console.log(ls.indexAtRecursive(0));
+console.log('popped node:', ls.pop());
+console.log(ls);
