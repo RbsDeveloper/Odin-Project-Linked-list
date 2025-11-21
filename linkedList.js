@@ -26,6 +26,23 @@ class LinkedList{
         this.length++
         return this;
     }
+
+    //Adds a new node to the beginnign of the linked list
+    prepend(val){
+        const node = new Node(val);
+
+        if(!this.head){
+            this.head = node;
+            this.tail = this.head;
+        }else{
+            let temp = this.head;
+            node.next = temp;
+            this.head = node;
+        }
+
+        this.length++
+        return this
+    }
    
 }
 
@@ -37,3 +54,4 @@ ls.append(2)
 ls.append(3)
 console.log(ls)
 
+console.log(ls.prepend(0));
