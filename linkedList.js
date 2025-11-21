@@ -56,18 +56,44 @@ class LinkedList{
     showTail(){
         return this.tail;
     }
+    //It Returns the node at the given index (iterative v)
+    indexAt(idx){
+        
+        if(idx < 0 || idx >= this.length) return null
+        
+        let nodeAtIdx = this.head;
+        for(let i = 0; i< idx; i++){
+            nodeAtIdx = nodeAtIdx.next;
+        }
+        return nodeAtIdx;
+    }
+
+    //It Returns the node at the given index (iterative v)
+    indexAtRecursive(idx, node = this.head){
+        if(idx<0 || idx >= this.length) return null
+        if(idx === 0) return node
+
+        return this.indexAtRecursive(idx-1, node.next)
+    }
    
 }
 
 let ls = new LinkedList();
-console.log(ls);
+//console.log(ls);
 
 ls.append(1)
 ls.append(2)
 ls.append(3)
 console.log(ls)
 
-console.log(ls.prepend(0));
-console.log(ls.size());
-console.log(ls.showHead());
-console.log(ls.showTail());
+// console.log(ls.prepend(0));
+// console.log(ls.size());
+// console.log(ls.showHead());
+//console.log(ls.showTail());
+
+//console.log(ls.indexAt(0));
+//console.log(ls.indexAt(2));
+//console.log(ls.indexAt(4));
+console.log(ls.indexAtRecursive(4));
+console.log(ls.indexAtRecursive(2));
+console.log(ls.indexAtRecursive(0));
