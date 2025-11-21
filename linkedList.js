@@ -43,6 +43,19 @@ class LinkedList{
         this.length++
         return this
     }
+
+     //Return the total numbers of nodes in the list
+    size(){
+        return this.length;
+    }
+    //Returns the firsts node in the list
+    showHead(){
+        return this.head;
+    }
+    //Returns the last node in the list
+    showTail(){
+        return this.tail;
+    }
    
 }
 
@@ -55,3 +68,6 @@ ls.append(3)
 console.log(ls)
 
 console.log(ls.prepend(0));
+console.log(ls.size());
+console.log(ls.showHead());
+console.log(ls.showTail());
