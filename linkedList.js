@@ -68,7 +68,7 @@ class LinkedList{
         return nodeAtIdx;
     }
 
-    //It Returns the node at the given index (iterative v)
+    //It Returns the node at the given index (recursive v)
     indexAtRecursive(idx, node = this.head){
         if(idx<0 || idx >= this.length) return null
         if(idx === 0) return node
@@ -113,6 +113,13 @@ class LinkedList{
         }
         return false;
     }
+    //Returns true if the passsed val is in the list, otherwise false.(Recursive v)
+    containsRec(value, start = this.head){
+        if(!start) return false
+        if(start.value === value) return true;
+
+        return this.containsRec(value, start.next);
+    }
    
 }
 
@@ -137,4 +144,4 @@ console.log(ls.prepend(0));
 //console.log(ls.indexAtRecursive(0));
 // console.log('popped node:', ls.pop());
 console.log(ls);
-console.log(ls.contains(4));
+console.log(ls.containsRec(2));
