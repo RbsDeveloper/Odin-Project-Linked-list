@@ -161,7 +161,7 @@ class LinkedList{
         return `(${current.value}) -> `.concat(this.toStringRec(current.next))
     }
 
-    // (0) -> (1) -> (2) -> (3) -> null
+    //Inserts a new node with the provided value at the given index.
 
     insertAt(value, index){
         if(index > this.length || index < 0) return null;
@@ -185,31 +185,59 @@ class LinkedList{
 
         console.log(this.toString())
     }
+
+    //Removes the node at the given index
+    removeAt(index){
+        if(index < 0 || index >= this.length || this.length === 0) return null;
+
+        // Remove last node using pop
+        if(index === this.length -1) return this.pop().value;
+        
+
+        let previousNode
+        let currentNode = this.head;
+        let valueToReturn
+
+        // Remove when only one element
+        if(index === 0 && this.length===1){
+            valueToReturn = this.head.value
+            this.head = null;
+            this.tail = null;
+            this.length--
+            return valueToReturn;
+        }
+
+        // Remove head in multi-node list
+        if(index===0){
+            this.head = currentNode.next;
+            valueToReturn = currentNode.value;
+            currentNode.next = null;
+            this.length--
+            return valueToReturn;
+        }
+
+        for(let i = 0; i < index; i++){
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+            
+        }
+
+        previousNode.next = currentNode.next;
+        valueToReturn = currentNode.value;
+        currentNode.next = null;
+        this.length--
+        return valueToReturn
+    }
    
 }
 
 let ls = new LinkedList();
-//console.log(ls);
 
-ls.append(1)
-ls.append(2)
-ls.append(3)
-// console.log(ls)
+ls.append("dog");
+ls.append("cat");
+ls.append("parrot");
+ls.append("hamster");
+ls.append("snake");
+ls.append("turtle");
 
-console.log(ls.prepend(0));
-//console.log(ls.size());
-//console.log(ls.showHead());
-//console.log(ls.showTail());
-
-//console.log(ls.indexAt(0));
-//console.log(ls.indexAt(2));
-//console.log(ls.indexAt(4));
-//console.log(ls.indexAtRecursive(4));
-//console.log(ls.indexAtRecursive(2));
-//console.log(ls.indexAtRecursive(0));
-// console.log('popped node:', ls.pop());
-// console.log(ls);
-// console.log(ls.containsRec(2));
-console.log(ls.findRec(2));
-console.log(ls.toStringRec())
-ls.insertAt(5, 3);
+console.log(ls.toString())
