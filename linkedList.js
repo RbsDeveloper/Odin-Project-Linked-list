@@ -103,6 +103,16 @@ class LinkedList{
         this.length--
         return oldTail;
     }
+    //Returns true if the passsed val is in the list, otherwise false. 
+    contains(value){
+        let current = this.head;
+        
+        while(current){
+            if(current.value === value) return true
+            current = current.next
+        }
+        return false;
+    }
    
 }
 
@@ -125,5 +135,6 @@ console.log(ls.prepend(0));
 //console.log(ls.indexAtRecursive(4));
 //console.log(ls.indexAtRecursive(2));
 //console.log(ls.indexAtRecursive(0));
-console.log('popped node:', ls.pop());
+// console.log('popped node:', ls.pop());
 console.log(ls);
+console.log(ls.contains(4));
