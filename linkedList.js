@@ -142,6 +142,24 @@ class LinkedList{
         
         return this.findRec(value, current.next, idx+1);    
     }
+    //Represents your LinkedList nodes as strings
+    toString(){
+        let current = this.head;
+        let strResult =''
+        while(current){
+            strResult = strResult.concat(`(${current.value}) -> `)
+            current = current.next;
+        }
+        strResult = strResult.concat('null');
+        return strResult;
+    }
+
+    //Represents your LinkedList objects as strings(Recursive v)
+    toStringRec(current = this.head){
+        
+        if(!current) return "null";
+        return `(${current.value}) -> `.concat(this.toStringRec(current.next))
+    }
    
 }
 
@@ -153,7 +171,7 @@ ls.append(2)
 ls.append(3)
 // console.log(ls)
 
-//console.log(ls.prepend(0));
+console.log(ls.prepend(0));
 //console.log(ls.size());
 //console.log(ls.showHead());
 //console.log(ls.showTail());
@@ -168,3 +186,4 @@ ls.append(3)
 // console.log(ls);
 // console.log(ls.containsRec(2));
 console.log(ls.findRec(2));
+console.log(ls.toStringRec())
