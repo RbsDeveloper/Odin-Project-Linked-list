@@ -160,6 +160,31 @@ class LinkedList{
         if(!current) return "null";
         return `(${current.value}) -> `.concat(this.toStringRec(current.next))
     }
+
+    // (0) -> (1) -> (2) -> (3) -> null
+
+    insertAt(value, index){
+        if(index > this.length || index < 0) return null;
+
+        if(index === 0) return  this.prepend(value)
+
+        if(index === this.length) return this.append(value)
+        
+        const node = new Node(value);
+        let previousNode;
+        let current = this.head;
+            
+        for(let i = 0; i < index; i++){
+            previousNode = current;
+            current = current.next;
+        }
+
+        previousNode.next = node;
+        node.next = current;
+        this.length++
+
+        console.log(this.toString())
+    }
    
 }
 
@@ -187,3 +212,4 @@ console.log(ls.prepend(0));
 // console.log(ls.containsRec(2));
 console.log(ls.findRec(2));
 console.log(ls.toStringRec())
+ls.insertAt(5, 3);
