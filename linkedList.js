@@ -120,6 +120,28 @@ class LinkedList{
 
         return this.containsRec(value, start.next);
     }
+    //Returns the index of the node containing value, or null if not found.
+    find(value){
+        if(!this.head) return null; 
+
+        let current = this.head;
+        let index = 0;
+        
+        while (current) {
+            if (current.value === value) return index;
+            current = current.next;
+            index++
+        }
+
+        return null
+    }
+    //Returns the index of the node containing value, or null if not found.(Recursive v)
+    findRec(value, current = this.head, idx = 0){
+        if(!current) return null;
+        if(current.value === value) return idx
+        
+        return this.findRec(value, current.next, idx+1);    
+    }
    
 }
 
@@ -129,9 +151,9 @@ let ls = new LinkedList();
 ls.append(1)
 ls.append(2)
 ls.append(3)
-console.log(ls)
+// console.log(ls)
 
-console.log(ls.prepend(0));
+//console.log(ls.prepend(0));
 //console.log(ls.size());
 //console.log(ls.showHead());
 //console.log(ls.showTail());
@@ -143,5 +165,6 @@ console.log(ls.prepend(0));
 //console.log(ls.indexAtRecursive(2));
 //console.log(ls.indexAtRecursive(0));
 // console.log('popped node:', ls.pop());
-console.log(ls);
-console.log(ls.containsRec(2));
+// console.log(ls);
+// console.log(ls.containsRec(2));
+console.log(ls.findRec(2));
