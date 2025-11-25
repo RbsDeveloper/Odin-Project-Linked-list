@@ -49,15 +49,15 @@ class LinkedList{
         return this.length;
     }
     //Returns the firsts node in the list
-    showHead(){
+    head(){
         return this.head;
     }
     //Returns the last node in the list
-    showTail(){
+    tail(){
         return this.tail;
     }
     //It Returns the node at the given index (iterative v)
-    indexAt(idx){
+    at(idx){
         
         if(idx < 0 || idx >= this.length) return null
         
@@ -69,11 +69,11 @@ class LinkedList{
     }
 
     //It Returns the node at the given index (recursive v)
-    indexAtRecursive(idx, node = this.head){
+    atRecursive(idx, node = this.head){
         if(idx<0 || idx >= this.length) return null
         if(idx === 0) return node
 
-        return this.indexAtRecursive(idx-1, node.next)
+        return this.atRecursive(idx-1, node.next)
     }
 
     //It pops the last element of the linked List 
